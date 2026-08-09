@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --success-soft: rgba(53, 196, 140, 0.10);
+}
+
+body {
+  background-color: #080b14;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(76, 130, 247, 0.10), transparent 45%),
+    radial-gradient(circle at 100% 20%, rgba(76, 130, 247, 0.06), transparent 40%);
+  color: #e8edf6;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-2;
+  }
+  .btn-ghost {
+    @apply border border-border text-text-1 hover:border-accent-soft-2 hover:text-accent-2;
+  }
+  .card {
+    @apply bg-panel border border-border rounded-[10px] p-6;
+  }
+  .badge {
+    @apply font-mono text-[10px] px-2.5 py-1 rounded-full inline-flex items-center gap-1 whitespace-nowrap;
+  }
+  .badge-video {
+    @apply bg-success-soft text-success border border-success/25;
+  }
+  .badge-none {
+    @apply bg-text-2/10 text-text-3 border border-border;
+  }
+  .badge-soon {
+    @apply bg-accent-soft text-accent-2 border border-accent-soft-2;
+  }
+  .input {
+    @apply w-full bg-panel-2 border border-border rounded-lg px-4 py-2.5 text-sm text-text-1 placeholder:text-text-3 focus:outline-none focus:border-accent-soft-2;
+  }
+}

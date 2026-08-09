@@ -1,0 +1,113 @@
+{
+  "brand": {
+    "name": "CyberSecurity Fundamentals"
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "services": "Services",
+    "pricing": "Pricing",
+    "login": "Log in",
+    "register": "Sign up",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "landing": {
+    "eyebrow": "Structure based on TryHackMe Pre-Security",
+    "title": "Learn cyber security fundamentals in the right order",
+    "titleHighlight": "fundamentals",
+    "subtitle": "No random videos — a proven roadmap. Every topic has its place; some already have video walkthroughs, the rest are being filled in gradually.",
+    "ctaPrimary": "View full roadmap",
+    "ctaSecondary": "How it works",
+    "roadmapPreviewTitle": "roadmap.en — Pre-Security based",
+    "viewFullRoadmap": "View full roadmap",
+    "howItWorksTitle": "The structure is fixed, the content grows over time",
+    "howItWorksSubtitle": "The roadmap is fully built already — every topic has its place. Video walkthroughs are added gradually.",
+    "step1Title": "Explore the roadmap",
+    "step1Desc": "7 sections, 31 topics — a complete structure covering cyber security fundamentals in the right order.",
+    "step2Title": "Watch available videos",
+    "step2Desc": "Topics that are ready have a video walkthrough you can watch right away; the rest appear as written material.",
+    "step3Title": "Follow new content",
+    "step3Desc": "Video walkthroughs are added regularly — you'll see the status update on the roadmap as they go live.",
+    "pricingTitle": "Transparent pricing, no hidden costs",
+    "planSubscription": "Monthly Subscription",
+    "planSubscriptionDesc": "Cancel anytime",
+    "planFreeNotice": "Currently free — no subscription required",
+    "planServices": "Audit & Consulting",
+    "planServicesDesc": "A package tailored to your company's needs",
+    "planCustom": "Custom quote",
+    "ctaSubscribe": "Subscribe now",
+    "ctaServices": "View services"
+  },
+  "auth": {
+    "loginTitle": "Sign in to your account",
+    "registerTitle": "Create a new account",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "loginButton": "Sign in",
+    "registerButton": "Sign up",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "goRegister": "Sign up",
+    "goLogin": "Sign in",
+    "error": "Something went wrong. Please check your details and try again.",
+    "checkEmailNotice": "Registration successful. Click the confirmation link we sent to this address to activate your account."
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "subtitle": "Fundamentals Roadmap · Pre-Security structure",
+    "continue": "Continue",
+    "statProgress": "OVERALL PROGRESS",
+    "statVideos": "TOPICS WITH VIDEO",
+    "statCurrentSection": "CURRENT SECTION",
+    "roadmapTitle": "Fundamentals Roadmap",
+    "roadmapLegend": "🎬 = video available, 📄 = written material only, ⏳ = coming soon",
+    "hasVideo": "Video available",
+    "textOnly": "Material only",
+    "comingSoon": "Coming soon",
+    "topicsCount": "topics"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Audit, penetration testing and consulting — tailored solutions for your team",
+    "orderButton": "Request",
+    "formTitle": "Request form",
+    "formName": "Full name",
+    "formEmail": "Email",
+    "formPhone": "Phone",
+    "formCompany": "Company (optional)",
+    "formMessage": "Your message",
+    "formSubmit": "Submit",
+    "formSuccess": "Your request has been received. We'll be in touch shortly."
+  },
+  "checkout": {
+    "title": "Subscribe",
+    "azUsers": "Azerbaijani cardholders",
+    "intlUsers": "International cardholders",
+    "payWithPayriff": "Pay with Payriff",
+    "payWithStripe": "Pay with Stripe",
+    "monthlyPrice": "10 AZN / month",
+    "mockNotice": "Test mode — no real payment is processed."
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "sections": "Sections",
+    "topics": "Topics",
+    "addTopic": "Add new topic",
+    "editTopic": "Edit topic",
+    "titleAz": "Title (AZ)",
+    "titleEn": "Title (EN)",
+    "descAz": "Description (AZ)",
+    "descEn": "Description (EN)",
+    "videoStatus": "Video status",
+    "bunnyVideoId": "Bunny.net Video ID",
+    "save": "Save",
+    "cancel": "Cancel",
+    "monetization": "Monetization",
+    "monetizationDesc": "When enabled, a subscription is required to watch videos.",
+    "orders": "Service requests"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}

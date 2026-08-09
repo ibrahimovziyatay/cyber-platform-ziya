@@ -1,0 +1,113 @@
+{
+  "brand": {
+    "name": "CyberSecurity Fundamentals"
+  },
+  "nav": {
+    "howItWorks": "Necə işləyir",
+    "services": "Xidmətlər",
+    "pricing": "Qiymət",
+    "login": "Giriş",
+    "register": "Qeydiyyat",
+    "dashboard": "Dashboard",
+    "logout": "Çıxış"
+  },
+  "landing": {
+    "eyebrow": "Struktur: TryHackMe Pre-Security əsaslı",
+    "title": "Kibertəhlükəsizliyin fundamentlərini düzgün ardıcıllıqla öyrənin",
+    "titleHighlight": "fundamentlərini",
+    "subtitle": "Təsadüfi videolar yox — sınanmış roadmap. Hər mövzu öz yerindədir; bəzilərinə artıq video izahı əlavə olunub, qalanları tədricən doldurulur.",
+    "ctaPrimary": "Tam Roadmap-a bax",
+    "ctaSecondary": "Necə işləyir",
+    "roadmapPreviewTitle": "roadmap.az — Pre-Security əsaslı",
+    "viewFullRoadmap": "Tam roadmap-a bax",
+    "howItWorksTitle": "Struktur sabit, kontent tədricən böyüyür",
+    "howItWorksSubtitle": "Roadmap əvvəlcədən tam qurulub — bütün mövzular öz yerindədir. Video izahları isə tədricən əlavə olunur.",
+    "step1Title": "Roadmap-a bax",
+    "step1Desc": "7 bölmə, 31 mövzu — kibertəhlükəsizliyin fundamentlərini düzgün ardıcıllıqla göstərən tam struktur.",
+    "step2Title": "Mövcud videoları izlə",
+    "step2Desc": "Hazır olan mövzularda video izahı dərhal izləyə bilərsiniz, qalanları yazılı material kimi görünür.",
+    "step3Title": "Yeni kontenti izləyin",
+    "step3Desc": "Video izahları müntəzəm əlavə olunur — roadmap-dakı status işarəsi yeniləndikcə xəbərdar olursunuz.",
+    "pricingTitle": "Şəffaf qiymət, gizli xərc yoxdur",
+    "planSubscription": "Aylıq Abunəlik",
+    "planSubscriptionDesc": "İstənilən vaxt ləğv edilə bilər",
+    "planFreeNotice": "Hazırda pulsuz — abunə tələb olunmur",
+    "planServices": "Audit & Konsaltinq",
+    "planServicesDesc": "Şirkətinizin ehtiyacına uyğun paket",
+    "planCustom": "Fərdi təklif",
+    "ctaSubscribe": "İndi abunə ol",
+    "ctaServices": "Xidmətlərə bax"
+  },
+  "auth": {
+    "loginTitle": "Hesabınıza daxil olun",
+    "registerTitle": "Yeni hesab yaradın",
+    "email": "E-poçt",
+    "password": "Şifrə",
+    "fullName": "Ad Soyad",
+    "loginButton": "Daxil ol",
+    "registerButton": "Qeydiyyatdan keç",
+    "noAccount": "Hesabınız yoxdur?",
+    "haveAccount": "Artıq hesabınız var?",
+    "goRegister": "Qeydiyyatdan keçin",
+    "goLogin": "Daxil olun",
+    "error": "Xəta baş verdi. Məlumatları yoxlayıb yenidən cəhd edin.",
+    "checkEmailNotice": "Qeydiyyat uğurludur. Hesabınızı aktivləşdirmək üçün bu ünvana göndərdiyimiz təsdiq linkinə klikləyin."
+  },
+  "dashboard": {
+    "welcome": "Xoş gəldiniz",
+    "subtitle": "Fundamental Roadmap · Pre-Security struktur",
+    "continue": "Davam et",
+    "statProgress": "ÜMUMİ İRƏLİLƏYİŞ",
+    "statVideos": "VİDEOLU MÖVZULAR",
+    "statCurrentSection": "CARİ BÖLMƏ",
+    "roadmapTitle": "Fundamental Roadmap",
+    "roadmapLegend": "🎬 = video mövcuddur, 📄 = yalnız yazılı material, ⏳ = tezliklə əlavə olunacaq",
+    "hasVideo": "Video var",
+    "textOnly": "Yalnız material",
+    "comingSoon": "Tezliklə",
+    "topicsCount": "mövzu"
+  },
+  "services": {
+    "title": "Xidmətlər",
+    "subtitle": "Audit, sızma testi və konsaltinq — komandanız üçün fərdi həllər",
+    "orderButton": "Sifariş et",
+    "formTitle": "Sifariş forması",
+    "formName": "Ad Soyad",
+    "formEmail": "E-poçt",
+    "formPhone": "Telefon",
+    "formCompany": "Şirkət (istəyə bağlı)",
+    "formMessage": "Mesajınız",
+    "formSubmit": "Göndər",
+    "formSuccess": "Sifarişiniz qəbul edildi. Tezliklə sizinlə əlaqə saxlayacağıq."
+  },
+  "checkout": {
+    "title": "Abunəliyə keç",
+    "azUsers": "Azərbaycan kart sahibləri",
+    "intlUsers": "Beynəlxalq kart sahibləri",
+    "payWithPayriff": "Payriff ilə ödə",
+    "payWithStripe": "Stripe ilə ödə",
+    "monthlyPrice": "10 ₼ / ay",
+    "mockNotice": "Test rejimi — real ödəniş həyata keçirilmir."
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "sections": "Bölmələr",
+    "topics": "Mövzular",
+    "addTopic": "Yeni mövzu əlavə et",
+    "editTopic": "Mövzunu redaktə et",
+    "titleAz": "Başlıq (AZ)",
+    "titleEn": "Başlıq (EN)",
+    "descAz": "Təsvir (AZ)",
+    "descEn": "Təsvir (EN)",
+    "videoStatus": "Video statusu",
+    "bunnyVideoId": "Bunny.net Video ID",
+    "save": "Yadda saxla",
+    "cancel": "Ləğv et",
+    "monetization": "Monetizasiya",
+    "monetizationDesc": "Aktiv olduqda, video izləmək üçün abunəlik tələb olunur.",
+    "orders": "Xidmət sifarişləri"
+  },
+  "footer": {
+    "rights": "Bütün hüquqlar qorunur"
+  }
+}
