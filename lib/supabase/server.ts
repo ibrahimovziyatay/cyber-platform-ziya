@@ -26,7 +26,6 @@ export async function createClient() {
     }
   );
 }
-
 /**
  * Service-role client — bypasses RLS. Use ONLY in trusted server contexts
  * such as payment webhooks. Never expose this client or key to the browser.
