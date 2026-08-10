@@ -13,7 +13,7 @@ export async function getRoadmap(): Promise<RoadmapSection[]> {
 
   const { data: topics } = await supabase
     .from('roadmap_topics')
-    .select('id, section_id, order_index, title_az, title_en, video_status, bunny_video_id')
+    .select('id, section_id, order_index, title_az, title_en, video_status, bunny_video_id, thumbnail_url')
     .order('order_index');
 
   return sections.map((section) => ({
