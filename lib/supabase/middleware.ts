@@ -22,7 +22,6 @@ export async function updateSupabaseSession(request: NextRequest) {
       }
     }
   );
-
   // IMPORTANT: do not run logic between createServerClient and getUser().
   const {
     data: { user }
