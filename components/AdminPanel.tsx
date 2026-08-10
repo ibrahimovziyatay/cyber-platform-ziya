@@ -34,7 +34,8 @@ export default function AdminPanel({
     description_az: '',
     description_en: '',
     video_status: 'coming_soon',
-    bunny_video_id: ''
+    bunny_video_id: '',
+    thumbnail_url: '' as string | null
   });
   const [addingSection, setAddingSection] = useState(false);
   const [newSection, setNewSection] = useState({ title_az: '', title_en: '' });
@@ -49,7 +50,7 @@ export default function AdminPanel({
       .eq('key', 'monetization_enabled');
   }
 
-  async function saveTopic(topic: RoadmapTopic & { description_az?: string; description_en?: string }) {
+  async function saveTopic(topic: RoadmapTopic & { description_az?: string; description_en?: string; thumbnail_url?: string | null }) {
     setSavingId(topic.id);
     const supabase = createClient();
     await supabase
@@ -60,7 +61,8 @@ export default function AdminPanel({
         description_az: topic.description_az ?? null,
         description_en: topic.description_en ?? null,
         video_status: topic.video_status,
-        bunny_video_id: topic.bunny_video_id
+        bunny_video_id: topic.bunny_video_id,
+        thumbnail_url: topic.thumbnail_url ?? null
       })
       .eq('id', topic.id);
     setSavingId(null);
@@ -81,7 +83,8 @@ export default function AdminPanel({
       description_az: newTopic.description_az || null,
       description_en: newTopic.description_en || null,
       video_status: newTopic.video_status,
-      bunny_video_id: newTopic.bunny_video_id || null
+      bunny_video_id: newTopic.bunny_video_id || null,
+      thumbnail_url: newTopic.thumbnail_url || null
     });
 
     setAddingToSection(null);
@@ -91,7 +94,8 @@ export default function AdminPanel({
       description_az: '',
       description_en: '',
       video_status: 'coming_soon',
-      bunny_video_id: ''
+      bunny_video_id: '',
+      thumbnail_url: ''
     });
     window.location.reload();
   }
@@ -294,6 +298,32 @@ function TopicEditForm({
   saving: boolean;
   t: any;
 }) {
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  async function handleThumbnailUpload(file: File) {
+    setUploading(true);
+    setUploadError(null);
+
+    const supabase = createClient();
+    const ext = file.name.split('.').pop();
+    const path = `${topic.id || 'new'}-${Date.now()}.${ext}`;
+
+    const { error: uploadErr } = await supabase.storage
+      .from('thumbnails')
+      .upload(path, file, { upsert: true });
+
+    if (uploadErr) {
+      setUploadError(uploadErr.message);
+      setUploading(false);
+      return;
+    }
+
+    const { data } = supabase.storage.from('thumbnails').getPublicUrl(path);
+    onChange({ ...topic, thumbnail_url: data.publicUrl });
+    setUploading(false);
+  }
+
   return (
     <div className="flex flex-col gap-3">
       <div className="grid sm:grid-cols-2 gap-3">
@@ -350,6 +380,38 @@ function TopicEditForm({
             value={topic.bunny_video_id ?? ''}
             onChange={(e) => onChange({ ...topic, bunny_video_id: e.target.value })}
           />
+        </div>
+
+        <div className="sm:col-span-2">
+          <label className="block text-xs text-text-3 mb-1">Şəkil (thumbnail)</label>
+          <div className="flex items-center gap-3">
+            {topic.thumbnail_url && (
+              <img
+                src={topic.thumbnail_url}
+                alt=""
+                className="w-16 h-16 rounded-lg object-cover border border-border"
+              />
+            )}
+            <label className="btn btn-ghost !py-1.5 !px-3 text-xs cursor-pointer">
+              {uploading ? 'Yüklənir...' : topic.thumbnail_url ? 'Şəkli dəyiş' : 'Şəkil yüklə'}
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                disabled={uploading}
+                onChange={(e) => e.target.files?.[0] && handleThumbnailUpload(e.target.files[0])}
+              />
+            </label>
+            {topic.thumbnail_url && (
+              <button
+                onClick={() => onChange({ ...topic, thumbnail_url: null })}
+                className="text-danger text-xs hover:underline"
+              >
+                Sil
+              </button>
+            )}
+          </div>
+          {uploadError && <p className="text-danger text-xs mt-1">{uploadError}</p>}
         </div>
       </div>
       <div className="flex gap-2">
