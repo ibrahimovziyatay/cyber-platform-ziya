@@ -7,6 +7,7 @@ export interface RoadmapTopic {
   title_en: string;
   video_status: 'text_only' | 'has_video' | 'coming_soon';
   bunny_video_id: string | null;
+  thumbnail_url?: string | null;
 }
 
 export interface RoadmapSection {
@@ -69,8 +70,17 @@ export default function RoadmapView({
               {topics.map((topic) => {
                 const content = (
                   <>
-                    <span className="text-text-1 text-[13.5px] font-medium">
-                      {locale === 'az' ? topic.title_az : topic.title_en}
+                    <span className="flex items-center gap-2.5">
+                      {topic.thumbnail_url && (
+                        <img
+                          src={topic.thumbnail_url}
+                          alt=""
+                          className="w-8 h-8 rounded object-cover border border-border flex-shrink-0"
+                        />
+                      )}
+                      <span className="text-text-1 text-[13.5px] font-medium">
+                        {locale === 'az' ? topic.title_az : topic.title_en}
+                      </span>
                     </span>
                     <StatusTag status={topic.video_status} />
                   </>
