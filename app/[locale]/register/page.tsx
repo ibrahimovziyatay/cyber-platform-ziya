@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import { Link, useRouter } from '@/i18n/navigation';
 import { createClient } from '@/lib/supabase/client';
 
@@ -50,19 +51,29 @@ export default function RegisterPage() {
   if (checkEmail) {
     return (
       <main className="max-w-[420px] mx-auto px-6 py-20">
-        <div className="card text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="card text-center"
+        >
           <h1 className="font-display text-xl font-semibold mb-3">📩 {email}</h1>
           <p className="text-text-2 text-sm">
             {t('checkEmailNotice')}
           </p>
-        </div>
+        </motion.div>
       </main>
     );
   }
 
   return (
     <main className="max-w-[420px] mx-auto px-6 py-20">
-      <div className="card">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="card"
+      >
         <h1 className="font-display text-2xl font-semibold mb-6">{t('registerTitle')}</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -107,11 +118,11 @@ export default function RegisterPage() {
 
         <p className="text-sm text-text-2 mt-6 text-center">
           {t('haveAccount')}{' '}
-          <Link href="/login" className="text-accent-2">
+          <Link href="/login" className="text-accent-2 hover:underline">
             {t('goLogin')}
           </Link>
         </p>
-      </div>
+      </motion.div>
     </main>
   );
 }
