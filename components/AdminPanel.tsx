@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import type { RoadmapSection, RoadmapTopic } from './RoadmapView';
 
@@ -24,6 +26,8 @@ export default function AdminPanel({
   orders: ServiceOrder[];
 }) {
   const t = useTranslations('admin');
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const [monetization, setMonetization] = useState(initialMonetization);
   const [editingTopic, setEditingTopic] = useState<RoadmapTopic | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
@@ -67,7 +71,7 @@ export default function AdminPanel({
       .eq('id', topic.id);
     setSavingId(null);
     setEditingTopic(null);
-    window.location.reload();
+    startTransition(() => router.refresh());
   }
 
   async function createTopic(sectionId: string) {
@@ -97,14 +101,14 @@ export default function AdminPanel({
       bunny_video_id: '',
       thumbnail_url: ''
     });
-    window.location.reload();
+    startTransition(() => router.refresh());
   }
 
   async function deleteTopic(topicId: string) {
     if (!confirm('Bu mövzunu silmək istədiyinizə əminsiniz?')) return;
     const supabase = createClient();
     await supabase.from('roadmap_topics').delete().eq('id', topicId);
-    window.location.reload();
+    startTransition(() => router.refresh());
   }
 
   async function createSection() {
@@ -119,7 +123,7 @@ export default function AdminPanel({
 
     setAddingSection(false);
     setNewSection({ title_az: '', title_en: '' });
-    window.location.reload();
+    startTransition(() => router.refresh());
   }
 
   async function updateOrderStatus(orderId: string, status: string) {
@@ -128,7 +132,19 @@ export default function AdminPanel({
   }
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 relative">
+      <AnimatePresence>
+        {isPending && (
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="fixed top-0 left-0 right-0 h-[2px] bg-accent origin-left z-[60]"
+          />
+        )}
+      </AnimatePresence>
+
       {/* ---- Monetization toggle ---- */}
       <div className="card flex items-center justify-between gap-6">
         <div>
