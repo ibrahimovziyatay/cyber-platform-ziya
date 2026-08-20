@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import { Link, useRouter } from '@/i18n/navigation';
 import { useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -37,7 +38,12 @@ export default function LoginPage() {
 
   return (
     <main className="max-w-[420px] mx-auto px-6 py-20">
-      <div className="card">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="card"
+      >
         <h1 className="font-display text-2xl font-semibold mb-6">{t('loginTitle')}</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -71,11 +77,11 @@ export default function LoginPage() {
 
         <p className="text-sm text-text-2 mt-6 text-center">
           {t('noAccount')}{' '}
-          <Link href="/register" className="text-accent-2">
+          <Link href="/register" className="text-accent-2 hover:underline">
             {t('goRegister')}
           </Link>
         </p>
-      </div>
+      </motion.div>
     </main>
   );
 }
