@@ -1,4 +1,7 @@
+'use client';
+
 import { useTranslations, useLocale } from 'next-intl';
+import { motion } from 'framer-motion';
 
 export interface RoadmapTopic {
   id: string;
@@ -51,11 +54,23 @@ export default function RoadmapView({
         const isLast = sIdx === visibleSections.length - 1;
 
         return (
-          <div key={section.id} className="relative pl-7 pb-6 last:pb-0">
+          <motion.div
+            key={section.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: sIdx * 0.08 }}
+            className="relative pl-7 pb-6 last:pb-0"
+          >
             {!isLast && (
               <span className="absolute left-2 top-6 bottom-0 w-0.5 bg-border" aria-hidden />
             )}
-            <span className="absolute left-0.5 top-0.5 w-[15px] h-[15px] rounded-full bg-accent-soft border-2 border-accent" aria-hidden />
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: sIdx * 0.08 + 0.1, type: 'spring', stiffness: 400, damping: 20 }}
+              className="absolute left-0.5 top-0.5 w-[15px] h-[15px] rounded-full bg-accent-soft border-2 border-accent"
+              aria-hidden
+            />
 
             <div className="flex items-center justify-between mb-3">
               <div className="font-mono text-[11.5px] font-semibold uppercase tracking-wide text-text-1">
@@ -67,7 +82,7 @@ export default function RoadmapView({
             </div>
 
             <div className="flex flex-col gap-1.5">
-              {topics.map((topic) => {
+              {topics.map((topic, tIdx) => {
                 const content = (
                   <>
                     <span className="flex items-center gap-2.5">
@@ -86,29 +101,39 @@ export default function RoadmapView({
                   </>
                 );
 
+                const rowDelay = sIdx * 0.08 + tIdx * 0.04 + 0.12;
+
                 if (!onTopicClick) {
                   return (
-                    <div
+                    <motion.div
                       key={topic.id}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.35, delay: rowDelay }}
                       className="bg-panel border border-border rounded-lg px-4 py-2.5 flex items-center justify-between gap-2.5"
                     >
                       {content}
-                    </div>
+                    </motion.div>
                   );
                 }
 
                 return (
-                  <button
+                  <motion.button
                     key={topic.id}
                     onClick={() => onTopicClick(topic)}
-                    className="bg-panel border border-border rounded-lg px-4 py-2.5 flex items-center justify-between gap-2.5 text-left hover:border-accent-soft-2 transition-colors"
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.35, delay: rowDelay }}
+                    whileHover={{ x: 4, borderColor: 'rgba(76,130,247,0.35)' }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-panel border border-border rounded-lg px-4 py-2.5 flex items-center justify-between gap-2.5 text-left"
                   >
                     {content}
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </div>
