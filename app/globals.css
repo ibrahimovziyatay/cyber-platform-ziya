@@ -8,27 +8,27 @@
 
 body {
   background-color: #080b14;
-  background-image:
-    radial-gradient(circle at 15% 0%, rgba(76, 130, 247, 0.10), transparent 45%),
-    radial-gradient(circle at 100% 20%, rgba(76, 130, 247, 0.06), transparent 40%);
   color: #e8edf6;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors;
+    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 active:scale-[0.96];
   }
   .btn-primary {
-    @apply bg-accent text-white hover:bg-accent-2;
+    @apply bg-accent text-white hover:bg-accent-2 hover:shadow-[0_0_0_4px_rgba(76,130,247,0.15)];
   }
-  .btn-ghost {
-    @apply border border-border text-text-1 hover:border-accent-soft-2 hover:text-accent-2;
+  .btn-ghost {a
+    @apply border border-border text-text-1 hover:border-accent-soft-2 hover:text-accent-2 hover:bg-accent-soft/40;
   }
   .card {
-    @apply bg-panel border border-border rounded-[10px] p-6;
+    @apply bg-panel border border-border rounded-[10px] p-6 transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:border-accent-soft-2 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)];
   }
   .badge {
-    @apply font-mono text-[10px] px-2.5 py-1 rounded-full inline-flex items-center gap-1 whitespace-nowrap;
+    @apply font-mono text-[10px] px-2.5 py-1 rounded-full inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-200;
   }
   .badge-video {
     @apply bg-success-soft text-success border border-success/25;
@@ -40,6 +40,15 @@ body {
     @apply bg-accent-soft text-accent-2 border border-accent-soft-2;
   }
   .input {
-    @apply w-full bg-panel-2 border border-border rounded-lg px-4 py-2.5 text-sm text-text-1 placeholder:text-text-3 focus:outline-none focus:border-accent-soft-2;
+    @apply w-full bg-panel-2 border border-border rounded-lg px-4 py-2.5 text-sm text-text-1 placeholder:text-text-3 focus:outline-none focus:border-accent-soft-2 transition-colors duration-200;
   }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(53, 196, 140, 0.35); }
+  70% { box-shadow: 0 0 0 8px rgba(53, 196, 140, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(53, 196, 140, 0); }
+}
+.pulse-live {
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
